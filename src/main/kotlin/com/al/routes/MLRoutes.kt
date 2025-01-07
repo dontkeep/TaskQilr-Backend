@@ -1,13 +1,11 @@
 package com.al.routes
 
 import com.al.client.MLService
-import com.al.model.InputInstance
-import io.ktor.http.*
+import com.al.model.fromres.InputInstance
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
 import io.ktor.util.reflect.*
 import kotlinx.serialization.Serializable
-import okhttp3.internal.concurrent.TaskRunner.Companion.logger
 
 @Serializable
 data class RecommendationResponse(

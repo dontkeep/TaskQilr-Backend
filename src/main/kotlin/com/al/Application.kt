@@ -4,6 +4,9 @@ import com.al.client.GoogleAuthService
 import com.al.client.MLService
 import com.al.plugin.authentication
 import com.al.plugin.configureSerialization
+import com.al.plugin.databaseConfiguration
+import com.al.repository.SessionRepository
+import com.al.repository.UserRepository
 import com.al.routes.mlRoutes
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -29,12 +32,15 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     configureSerialization()
-
+    databaseConfiguration()
     val googleAuthService = GoogleAuthService(client)
     val mlService = MLService(client)
+    val userRepository = UserRepository()
+    val sessionRepository = SessionRepository()
     // Configure routing
+
     authentication(client)
-    configureRouting(mlService, googleAuthService)
+    configureRouting(mlService, googleAuthService, userRepository, sessionRepository)
 }
 
 

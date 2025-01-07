@@ -1,6 +1,6 @@
 package com.al.client
 
-import com.al.model.UserInfo
+import com.al.model.fromres.UserInfo
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

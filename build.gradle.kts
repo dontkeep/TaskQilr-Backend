@@ -31,6 +31,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.3")
     implementation("io.ktor:ktor-server-auth:3.0.3")
     implementation("io.ktor:ktor-server-sessions:3.0.3")
+    implementation("io.ktor:ktor-server-auth-jwt:3.0.3")
 
     implementation("io.ktor:ktor-client-core:3.0.3")
     implementation("io.ktor:ktor-client-cio:3.0.3")
@@ -42,6 +43,14 @@ dependencies {
     implementation("io.ktor:ktor-client-serialization:3.0.3")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
+    implementation("org.jetbrains.exposed:exposed-core:0.57.0")
+    implementation("org.jetbrains.exposed:exposed-crypt:0.57.0")
+    implementation("org.jetbrains.exposed:exposed-dao:0.57.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.57.0")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.57.0")
+    implementation("mysql:mysql-connector-java:8.0.29")
+
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)

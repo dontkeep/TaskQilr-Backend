@@ -1,4 +1,4 @@
-package com.al.model
+package com.al.model.fromres
 
 import kotlinx.serialization.Serializable
 
