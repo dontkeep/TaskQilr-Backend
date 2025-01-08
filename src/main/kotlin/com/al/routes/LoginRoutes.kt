@@ -30,25 +30,21 @@ fun Route.loginRoute(httpClient: GoogleAuthService, userRepository: UserReposito
             if (principal != null) {
                 val userSession = UserSession(principal.state ?: "", principal.accessToken)
                 call.sessions.set(userSession)
-                // Fetch user info from Google
                 val userInfo = httpClient.fetchUserInfo(principal.accessToken)
 
-                // Check if the user already exists in the database
                 val existingUser = userRepository.findByEmail(userInfo.email)
 
                 val user = if (existingUser != null) {
-                    // If user exists, use their data
                     existingUser
                 } else {
-                    // If the user doesn't exist, create a new user in the database
                     val newUser = User(
                         name = userInfo.name,
                         email = userInfo.email,
-                        username = userInfo.name, // This can be updated later
+                        username = userInfo.name,
                         fcmToken = "",
-                        createdAt = LocalDateTime.now()// Set to empty or handle FCM token later
+                        createdAt = LocalDateTime.now()
                     )
-                    userRepository.createUser(newUser) // Store the new user in the DB
+                    userRepository.createUser(newUser)
                 }
 
                 val jwt = JWT.create()
@@ -61,19 +57,15 @@ fun Route.loginRoute(httpClient: GoogleAuthService, userRepository: UserReposito
 
                 val session = user.id?.let {
                     Session(
-                        token = jwt,  // Store the JWT token as the session token
+                        token = jwt,
                         userId = it,
                         createdAt = LocalDateTime.now()
                     )
                 }
 
-                logger.info("session: $session")
-
                 if (session != null) {
                     sessionRepository.createSession(session)
-                }  // Save the session to the DB
-
-                // Respond with the generated JWT token
+                }
                 call.respond(mapOf("token" to jwt))
             } else {
                 call.respondText("Authentication failed. Please try again.")
