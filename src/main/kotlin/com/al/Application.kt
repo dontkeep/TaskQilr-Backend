@@ -3,6 +3,7 @@ package com.al
 import com.al.client.GoogleAuthService
 import com.al.client.MLService
 import com.al.plugin.authentication
+import com.al.plugin.configureJWT
 import com.al.plugin.configureSerialization
 import com.al.plugin.databaseConfiguration
 import com.al.repository.SessionRepository
@@ -38,7 +39,6 @@ fun Application.module() {
     val userRepository = UserRepository()
     val sessionRepository = SessionRepository()
     // Configure routing
-
     authentication(client)
     configureRouting(mlService, googleAuthService, userRepository, sessionRepository)
 }

@@ -7,8 +7,8 @@ import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
 
 val jwtSecret = System.getenv("JWT_SECRET")
-val jwtIssuer = "http://localhost:8080"
-val jwtAudience = "http://localhost:8080"
+val jwtIssuer = "https://precious-sure-lioness.ngrok-free.app"
+val jwtAudience = "https://precious-sure-lioness.ngrok-free.app"
 
 fun Application.configureJWT() {
     install(Authentication) {

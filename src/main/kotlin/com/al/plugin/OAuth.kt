@@ -9,7 +9,7 @@ import io.ktor.server.auth.*
 fun Application.authentication(httpClient: HttpClient) {
     install(Authentication) {
         oauth("auth-oauth-google") {
-            urlProvider = { "http://localhost:8080/callback" }
+            urlProvider = { "https://precious-sure-lioness.ngrok-free.app/callback" }
             providerLookup = {
                 OAuthServerSettings.OAuth2ServerSettings(
                     name = "google",

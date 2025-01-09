@@ -66,7 +66,8 @@ fun Route.loginRoute(httpClient: GoogleAuthService, userRepository: UserReposito
                 if (session != null) {
                     sessionRepository.createSession(session)
                 }
-                call.respond(mapOf("token" to jwt))
+                val callbackUrl = "https://precious-sure-lioness.ngrok-free.app/callback?token=$jwt"
+                call.respondRedirect(callbackUrl)
             } else {
                 call.respondText("Authentication failed. Please try again.")
             }
