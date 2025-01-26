@@ -5,3 +5,9 @@ ktor:
     deployment:
         port: 8080
     development: true
+    security:
+        jwt:
+            secret: ${JWT_SECRET}
+            issuer: "al"
+            audience: "taskqilr"
+            realm: "taskqilr"

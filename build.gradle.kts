@@ -24,34 +24,24 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
     implementation(libs.ktor.client.okhttp)
-    implementation("io.ktor:ktor-server-content-negotiation:3.0.3")
-    implementation("io.ktor:ktor-serialization-gson:3.0.3")
-    implementation("io.ktor:ktor-server-status-pages:3.0.3")
-    implementation("io.ktor:ktor-server-cors:3.0.3")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.3")
-    implementation("io.ktor:ktor-server-auth:3.0.3")
-    implementation("io.ktor:ktor-server-sessions:3.0.3")
-    implementation("io.ktor:ktor-server-auth-jwt:3.0.3")
-
-    implementation("io.ktor:ktor-client-core:3.0.3")
-    implementation("io.ktor:ktor-client-cio:3.0.3")
-    implementation("io.ktor:ktor-client-content-negotiation:3.0.3")
-
-    implementation("io.ktor:ktor-client-logging:1.5.6")
-    implementation("io.ktor:ktor-client-auth:3.0.3")
-    implementation("io.ktor:ktor-client-json:3.0.3")
-    implementation("io.ktor:ktor-client-serialization:3.0.3")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-
-    implementation("org.jetbrains.exposed:exposed-core:0.57.0")
-    implementation("org.jetbrains.exposed:exposed-crypt:0.57.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.57.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.57.0")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.57.0")
-    implementation("mysql:mysql-connector-java:8.0.29")
-
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+
+    implementation("io.ktor:ktor-server-content-negotiation:2.3.7")
+    implementation("io.ktor:ktor-serialization-gson:2.3.7")
+    implementation("io.ktor:ktor-server-auth-jvm:2.3.7")
+    implementation("io.ktor:ktor-server-auth-jwt-jvm:2.3.7")
+    implementation("io.ktor:ktor-server-cors-jvm:2.3.7")
+
+    implementation("com.google.firebase:firebase-admin:9.3.0")
+
+    implementation("org.jetbrains.exposed:exposed-core:0.44.1")
+    implementation("org.jetbrains.exposed:exposed-dao:0.44.1")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.44.1")
+    implementation("org.jetbrains.exposed:exposed-java-time:0.44.1")
+    implementation("mysql:mysql-connector-java:8.0.33")
+    implementation("com.zaxxer:HikariCP:6.2.1")
+
+    implementation("ch.qos.logback:logback-classic:1.4.11")
 }
