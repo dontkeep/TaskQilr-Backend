@@ -18,7 +18,7 @@ class Config {
     val dbPassword: String get() = properties.getProperty("db.password")
 
     // JWT configuration
-    val jwtSecret: String get() = properties.getProperty("jwt.secret")
+    val jwtSecret: String get() = System.getenv("JWT_SECRET")
     val jwtIssuer: String get() = properties.getProperty("jwt.issuer")
     val jwtAudience: String get() = properties.getProperty("jwt.audience")
 

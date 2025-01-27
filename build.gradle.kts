@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
     kotlin("plugin.serialization") version "2.1.0"
+
 }
 
 group = "com.al"
@@ -44,4 +45,6 @@ dependencies {
     implementation("com.zaxxer:HikariCP:6.2.1")
 
     implementation("ch.qos.logback:logback-classic:1.4.11")
+
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.31.0")
 }

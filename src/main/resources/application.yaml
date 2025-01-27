@@ -7,7 +7,7 @@ ktor:
     development: true
     security:
         jwt:
-            secret: ${JWT_SECRET}
+            secret: System.getenv("JWT_SECRET")
             issuer: "al"
-            audience: "taskqilr"
+            audience: "528000822377-iltp1u0825hvkphc0q1p9gfoaqlrip66.apps.googleusercontent.com"
             realm: "taskqilr"
