@@ -19,9 +19,4 @@ class Config {
 
     // JWT configuration
     val jwtSecret: String get() = System.getenv("JWT_SECRET")
-    val jwtIssuer: String get() = properties.getProperty("jwt.issuer")
-    val jwtAudience: String get() = properties.getProperty("jwt.audience")
-
-    // Firebase configuration
-    val firebaseCredentialsPath: String get() = properties.getProperty("firebase.credentials.path")
 }

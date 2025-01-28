@@ -1,6 +1,7 @@
 package com.al.plugins
 
 import com.al.Config
+import com.al.features.session.SessionDao
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import io.ktor.server.application.*
@@ -10,7 +11,7 @@ import org.slf4j.LoggerFactory
 
 private val logger = LoggerFactory.getLogger("JwtConfig")
 
-fun Application.configureSecurity() {
+fun Application.configureSecurity(sessionDao: SessionDao) {
     val config = Config()
     val jwtAudience = environment.config.property("ktor.security.jwt.audience").getString()
     val jwtIssuer = environment.config.property("ktor.security.jwt.issuer").getString()
@@ -33,7 +34,10 @@ fun Application.configureSecurity() {
                     .build()
             )
             validate { credential ->
-                if (credential.payload.audience.contains(jwtAudience)) {
+                val jti = credential.payload.getClaim("jti").asString() ?: return@validate null
+
+                // Validate session using SessionDao
+                if (sessionDao.isSessionActive(jti)) {
                     JWTPrincipal(credential.payload)
                 } else {
                     null

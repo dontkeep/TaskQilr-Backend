@@ -17,7 +17,7 @@ object DatabaseFactory {
         Database.connect(pool)
 
         transaction {
-            SchemaUtils.create(Users)
+            SchemaUtils.create(Users, Sessions)
         }
     }
 
@@ -42,4 +42,14 @@ object Users : Table("users") {
     val createdAt = datetime("created_at")
 
     override val primaryKey = PrimaryKey(id)
+}
+
+object Sessions : Table("sessions") {
+    val tokenId = varchar("token_id", 36)
+    val userId = varchar("user_id", 36).references(Users.id)
+    val createdAt = datetime("created_at")
+    val expiresAt = datetime("expires_at")
+    val isActive = bool("is_active").default(true)
+
+    override val primaryKey = PrimaryKey(tokenId)
 }
